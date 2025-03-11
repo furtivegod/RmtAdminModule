@@ -5,7 +5,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-  return;
+
   // Save User to Database
   User.create({
     username: req.body.username,
@@ -41,13 +41,12 @@ exports.signin = (req, res) => {
   var token = jwt.sign({ id: 12345 }, config.secret, {
     expiresIn: 86400 // 24 hours
   });
-  res.status(200).send({
-    id: 12345,
-    username: req.body.username,
-    roles: [],
-    accessToken: token
-  });
-  return
+  // res.status(200).send({
+  //   id: 12345,
+  //   username: req.body.username,
+  //   roles: [],
+  //   accessToken: token
+  // });
   User.findOne({
     where: {
       username: req.body.username
